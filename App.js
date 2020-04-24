@@ -18,15 +18,15 @@ import {
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import allReducers from './reducers';
+//import AddComponents from './components/AddComponents';
+import AddContainer from './containers/AddContainer';
 
 const store = createStore(allReducers);
 
 const App: () => React$Node = () => {
   return (
     <Provider store={store}>
-      <View>
-        <Text>123</Text>
-      </View>
+      <AddContainer />
     </Provider>
   );
 };
