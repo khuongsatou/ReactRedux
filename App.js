@@ -15,19 +15,14 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import allReducers from './reducers';
-
-const store = createStore(allReducers);
 
 const App: () => React$Node = () => {
   return (
-    <Provider store={store}>
+    <SafeAreaView>
       <View>
         <Text>123</Text>
       </View>
-    </Provider>
+    </SafeAreaView>
   );
 };
 
