@@ -7,8 +7,9 @@ import {
   fetchMovieSuccessAction,
 } from '../actions';
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    movies: state.movieReducers,
+    movies: state.MovieReducers,
   };
 };
 

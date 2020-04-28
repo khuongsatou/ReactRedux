@@ -7,6 +7,8 @@ export default class MoviesComponent extends Component {
     releaseYear: '',
   };
   render() {
+    console.log(JSON.stringify(this.props.movies));
+    //alert(this.props.movies);
     return (
       <Container>
         <Content style={{marginHorizontal: 16}} scrollEnabled={false}>
@@ -57,11 +59,11 @@ export default class MoviesComponent extends Component {
             </View>
             <View>
               <FlatList
-                data={[{}]}
+                data={this.props.movies.results}
                 renderItem={({item}) => (
                   <View style={{flex: 1}}>
-                    <Text />
-                    <Text />
+                    <Text>{item.gender}</Text>
+                    <Text>{item.name.last}</Text>
                   </View>
                 )}
                 keyExtractor={item => item.toString()}
