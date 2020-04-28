@@ -1,4 +1,11 @@
-import {ADD_NEW_TASK, TOGGLE_ONE_TASK} from './actionTypes';
+import {
+  ADD_NEW_TASK,
+  TOGGLE_ONE_TASK,
+  ADD_MOVIES,
+  FETCH_FAILED,
+  FETCH_MOVIES,
+  FETCH_SUCCESS,
+} from './actionTypes';
 let newTaskId = 0;
 export const addNewTask = inputTaskName => {
   return {
@@ -12,5 +19,31 @@ export const toggleTask = taskID => {
   return {
     type: TOGGLE_ONE_TASK,
     taskId: taskID,
+  };
+};
+
+export const addMovieAction = newMovies => {
+  return {
+    type: ADD_MOVIES,
+    newMovies,
+  };
+};
+
+export const fetchMovieAction = sort => {
+  return {
+    type: FETCH_MOVIES,
+    sort,
+  };
+};
+export const fetchMovieSuccessAction = receivedMovies => {
+  return {
+    type: FETCH_SUCCESS,
+    receivedMovies,
+  };
+};
+export const fetchMovieFailedAction = error => {
+  return {
+    type: FETCH_FAILED,
+    error,
   };
 };
