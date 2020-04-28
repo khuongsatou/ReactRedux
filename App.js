@@ -15,20 +15,23 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import allReducers from './reducers';
-
-const store = createStore(allReducers);
+import allReducers from './src/reducers/';
+import createSagaMiddleware from 'redux-saga';
+import mySaga from './src/sagas';
+const sagaMiddleware = createSagaMiddleware();
+// mount it on the Store
+const store = createStore(allReducers, applyMiddleware(sagaMiddleware));
+import Home from './src/Home';
 
 const App: () => React$Node = () => {
   return (
     <Provider store={store}>
-      <View>
-        <Text>123</Text>
-      </View>
+      <Home />
     </Provider>
   );
 };
+sagaMiddleware.run(mySaga);
 
 export default App;
