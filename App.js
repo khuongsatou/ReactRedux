@@ -17,8 +17,8 @@ import {
 } from 'react-native';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import allReducers from './reducers';
-
+import allReducers from './src/redux/reducers';
+import Toggle from '@Components/Toggle';
 const store = createStore(allReducers);
 
 const App: () => React$Node = () => {
@@ -26,6 +26,7 @@ const App: () => React$Node = () => {
     <Provider store={store}>
       <View>
         <Text>123</Text>
+        <Toggle />
       </View>
     </Provider>
   );
