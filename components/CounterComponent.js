@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-export const CounterComponent = ({name}) => {
+export const CounterComponent = () => {
   const [count, setCount] = useState(0);
-
+  const [name, setName] = useState('khuong');
   const lastestCount = useRef(count);
   const funCounter = () => {
     setTimeout(() => {
@@ -16,19 +16,15 @@ export const CounterComponent = ({name}) => {
     }, 3000);
   };
 
-  useEffect(() => {
-    console.log('Component did Update');
-    //   setTimeout(() => {
-    //     alert('Component did Update');
-    //   }, 3000);
-  });
+  const changeName = input => {
+    setName(input);
+  };
 
+  const changeNameBind = changeName.bind(this, 'đạt');
+  const changeNameBind2 = changeName.bind(this, 'na');
   useEffect(() => {
-    console.log('Component did Mount');
-    // setTimeout(() => {
-    //   alert('Component Did mount');
-    // }, 3000);
-  }, []);
+    console.log('counter' + name);
+  }, [name]);
 
   return (
     <SafeAreaView>
@@ -39,6 +35,12 @@ export const CounterComponent = ({name}) => {
       <Text>{count}</Text>
       <TouchableOpacity onPress={funCounter}>
         <Text>Show Alert</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={changeNameBind}>
+        <Text>Change Name</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={changeNameBind2}>
+        <Text>Change Name 2</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
