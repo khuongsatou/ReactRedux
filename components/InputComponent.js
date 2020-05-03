@@ -9,7 +9,7 @@ import {
 import {useSelector, useDispatch} from 'react-redux';
 import {addNewTask} from '../actions';
 import Reactotron from 'reactotron-react-native';
-export const CounterComponent = () => {
+export const InputComponent = () => {
   const counter = useSelector(state => state.taskReducers);
   const dispatch = useDispatch();
   console.log(counter);

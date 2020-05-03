@@ -18,7 +18,8 @@ import {
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import allReducers from './reducers';
-import {CounterComponent} from './components/InputComponent';
+import {InputComponent} from './components/InputComponent';
+import {CounterComponent} from './components/CounterComponent';
 import Reactotron from './Reactotron';
 const store = createStore(allReducers, Reactotron.createEnhancer());
 
