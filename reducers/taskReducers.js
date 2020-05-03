@@ -1,6 +1,6 @@
 import {ADD_NEW_TASK, TOGGLE_ONE_TASK} from '../actions/actionTypes';
 // import {  } from "../actions/index";
-const taskReducers = (tasks = [], action) => {
+const taskReducers = (tasks = [{name: 'khuong', age: '21'}], action) => {
   switch (action.type) {
     case ADD_NEW_TASK:
       //create a object new , array include old and new

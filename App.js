@@ -18,15 +18,14 @@ import {
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import allReducers from './reducers';
-
-const store = createStore(allReducers);
+import {CounterComponent} from './components/InputComponent';
+import Reactotron from './Reactotron';
+const store = createStore(allReducers, Reactotron.createEnhancer());
 
 const App: () => React$Node = () => {
   return (
     <Provider store={store}>
-      <View>
-        <Text>123</Text>
-      </View>
+      <CounterComponent />
     </Provider>
   );
 };
