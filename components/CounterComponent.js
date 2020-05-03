@@ -10,20 +10,25 @@ export const CounterComponent = ({name}) => {
   const [count, setCount] = useState(0);
 
   const lastestCount = useRef(count);
-
-  function handleAlertClick() {
+  const funCounter = () => {
     setTimeout(() => {
       alert(`You clicked on: ${count}`);
     }, 3000);
-  }
+  };
 
   useEffect(() => {
-    //console.log('Counter' + count);
-    lastestCount.current = count;
-    setTimeout(() => {
-      alert(`You clicked on: ${lastestCount.current}`);
-    }, 3000);
+    console.log('Component did Update');
+    //   setTimeout(() => {
+    //     alert('Component did Update');
+    //   }, 3000);
   });
+
+  useEffect(() => {
+    console.log('Component did Mount');
+    // setTimeout(() => {
+    //   alert('Component Did mount');
+    // }, 3000);
+  }, []);
 
   return (
     <SafeAreaView>
@@ -32,7 +37,7 @@ export const CounterComponent = ({name}) => {
       </TouchableOpacity>
       <Text>Start</Text>
       <Text>{count}</Text>
-      <TouchableOpacity onPress={() => handleAlertClick()}>
+      <TouchableOpacity onPress={funCounter}>
         <Text>Show Alert</Text>
       </TouchableOpacity>
     </SafeAreaView>
