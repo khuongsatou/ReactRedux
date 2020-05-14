@@ -6,29 +6,55 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { Component } from "react";
 import {
   SafeAreaView,
-  StyleSheet,
   ScrollView,
   View,
   Text,
   StatusBar,
-} from 'react-native';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import allReducers from './reducers';
+  StyleSheet,
+} from "react-native";
+import Splash from "./Splash";
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true };
+  }
 
-const store = createStore(allReducers);
+  performTimeConsumingTask = async () => {
+    return new Promise((resolve) =>
+      setTimeout(() => {
+        resolve("result");
+      }, 2000)
+    );
+  };
 
-const App: () => React$Node = () => {
-  return (
-    <Provider store={store}>
-      <View>
-        <Text>123</Text>
+  render() {
+    if (this.state.isLoading) {
+      return <Splash />;
+    }
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Welcome to React Native!</Text>
+        <Text style={styles.instructions}>
+          Reload the App to see a splash screen
+        </Text>
       </View>
-    </Provider>
-  );
-};
+    );
+  }
+  async componentDidMount() {
+    // Preload data from an external API
+    // Preload data using AsyncStorage
+    const data = await this.performTimeConsumingTask();
+    if (data !== null) {
+      this.setState({ isLoading: false });
+    }
+  }
+}
 
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
